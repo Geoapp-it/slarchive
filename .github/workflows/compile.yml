@@ -6,21 +6,12 @@ on:
   pull_request:
       branches: [ main ]
 
-jobs: 
-  build-and-test: 
-    runs-on: ubuntu-latest
-    steps: 
-      - 
-        uses: actions/checkout@v2
-      - 
-        name: "install cppunit"
-        run: "sudo apt install -y libcppunit-dev"
-      - 
-        name: configure
-        run: ./configure
-      - 
-        name: make
-        run: make
-      - 
-        name: "make test"
-        run: "make test"
+jobs:
+  build-and-test:
+      runs-on: ubuntu-latest
+      steps:
+      - uses: actions/checkout@v2
+      - name: install cppunit
+        run: sudo apt install -y libcppunit-dev
+      - name: make
+        run: make static
